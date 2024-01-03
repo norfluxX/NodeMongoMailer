@@ -5,7 +5,7 @@ const ejs = require('ejs');
 const nodemailer = require('nodemailer');
 const basicAuth = require('basic-auth');
 const app = express();
-const port = 3000;
+const port = process.env.PORT || 3000;
 
 const mongoUsername = 'mongo';
 const mongoPassword = 'f4b3ccBcfGg24gB4FHFde2DF1D5eFag3';
@@ -110,6 +110,6 @@ app.get('/api/details', authenticate, async (req, res) => {
 
 // Start the Express server
 app.listen(port, () => {
-  console.log(`Server is running on http://localhost:${port}`);
+  console.log(`Server running at https://localhost:${port}/`);
 });
 
