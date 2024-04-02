@@ -7,13 +7,13 @@ const basicAuth = require('basic-auth');
 const app = express();
 const port = process.env.PORT || 3000;
 
-const mongoUsername = 'mongo';
-const mongoPassword = 'f4b3ccBcfGg24gB4FHFde2DF1D5eFag3';
+const mongoUsername = '';
+const mongoPassword = '';
 // Replace the connection string and database name with your actual values
 //const mongoUri = 'mongodb://viaduct.proxy.rlwy.net:49974';
-const mongoUri = `mongodb://${mongoUsername}:${mongoPassword}@viaduct.proxy.rlwy.net:49974/?authSource=admin`;
-const dbName = 'students';
-const collectionName = 'mycollection';
+const mongoUri = `mongodb://`;
+const dbName = '';
+const collectionName = '';
 
 // Secret key for JWT (replace with a strong, secret key)
 const jwtSecret = 'paraMountMinar404Gethahah.';
@@ -27,8 +27,8 @@ app.set('view engine', 'html');
 const transporter = nodemailer.createTransport({
   service: 'gmail',
   auth: {
-    user: 'bhikeshkhute10.3@gmail.com', // replace with your Gmail address
-    pass: 'aprusbkqptffouyb', // replace with your Gmail password or an app-specific password
+    user: '', // replace with your Gmail address
+    pass: '', // replace with your Gmail password or an app-specific password
   },
 });
 
