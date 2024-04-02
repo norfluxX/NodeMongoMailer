@@ -1,0 +1,46 @@
+version: '3.8'
+
+networks:
+  my_network:
+    ipam:
+      driver: default
+      config:
+        - subnet: 172.18.0.0/16
+          gateway: 172.18.0.1
+
+services:
+  mongodb:
+    image: mongo:latest
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: admin
+      MONGO_INITDB_ROOT_PASSWORD: admin
+      MONGO_INITDB_DATABASE: foo
+    volumes:
+      - mongodb_data:/data/db
+      - ./init.js:/docker-entrypoint-initdb.d/init.js
+    ports:
+      - "27017:27017"
+    networks:
+      my_network:
+        ipv4_address: 172.18.0.2
+    command: ["mongod", "--auth", "--bind_ip_all"]
+
+  nodejs:
+    image: node:alpine
+    working_dir: /app
+    volumes:
+      - ./views:/app/views
+      - ./package.json:/app/package.json
+      - ./package-lock.json:/app/package-lock.json
+      - ./app.js:/app/app.js
+    ports:
+      - "3000:3000"
+    networks:
+      my_network:
+        ipv4_address: 172.18.0.3
+    depends_on:
+      - mongodb
+    command: ["sh", "-c", "npm install && npm start"]
+
+volumes:
+  mongodb_data:

@@ -7,13 +7,13 @@ const basicAuth = require('basic-auth');
 const app = express();
 const port = process.env.PORT || 3000;
 
-const mongoUsername = '';
-const mongoPassword = '';
+const mongoUsername = '<username>';
+const mongoPassword = '<password>';
 // Replace the connection string and database name with your actual values
 //const mongoUri = 'mongodb://viaduct.proxy.rlwy.net:49974';
-const mongoUri = `mongodb://`;
-const dbName = '';
-const collectionName = '';
+const mongoUri = `mongodb://<username>:<password>@<ip>:<port>`;
+const dbName = '<dbname>';
+const collectionName = '<collectioname>';
 
 // Secret key for JWT (replace with a strong, secret key)
 const jwtSecret = 'paraMountMinar404Gethahah.';
@@ -27,8 +27,8 @@ app.set('view engine', 'html');
 const transporter = nodemailer.createTransport({
   service: 'gmail',
   auth: {
-    user: '', // replace with your Gmail address
-    pass: '', // replace with your Gmail password or an app-specific password
+    user: '<youremail>', // replace with your Gmail address
+    pass: '<yourapppassword>', // replace with your Gmail password or an app-specific password
   },
 });
 
@@ -57,7 +57,7 @@ app.post('/add', async (req, res) => {
 
     // Send email
     const mailOptions = {
-      from: 'bhikeshkhute10.3@gmail.com', // replace with your Gmail address
+      from: '<origin_email>', // replace with your Gmail address
       to: `${email}`, // replace with the recipient's email address
       subject: 'New Form Submission',
       text: `Name: ${name}\nEmail: ${email}\nMessage: ${message}`,
@@ -80,7 +80,7 @@ const authenticate = (req, res, next) => {
   if (!credentials){
     res.setHeader('WWW-Authenticate', 'Basic realm="Secure Area"');
     res.status(401).send('Authentication required');
-  } else if (credentials.name == 'animal' && credentials.pass == 'tripti'){
+  } else if (credentials.name == 'chooseanything' && credentials.pass == 'literally'){
 	next();
 	} else {
     res.status(403).send('Authentication Failed!');
