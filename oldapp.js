@@ -1,19 +1,19 @@
 const express = require('express');
-const https = require('https');
-const fs = require('fs');
 const { MongoClient } = require('mongodb');
 const bodyParser = require('body-parser');
 const ejs = require('ejs');
 const nodemailer = require('nodemailer');
 const basicAuth = require('basic-auth');
 const app = express();
-const port = process.env.PORT || 443;
+const port = process.env.PORT || 3000;
 
-const mongoUsername = 'coint';
-const mongoPassword = 'foreX_1';
-const mongoUri = `mongodb://coin:foreX_1@172.17.0.2:27017`;
-const dbName = 'foo';
-const collectionName = 'roger';
+const mongoUsername = '<username>';
+const mongoPassword = '<password>';
+// Replace the connection string and database name with your actual values
+//const mongoUri = 'mongodb://viaduct.proxy.rlwy.net:49974';
+const mongoUri = `mongodb://<username>:<password>@<ip>:<port>`;
+const dbName = '<dbname>';
+const collectionName = '<collectioname>';
 
 // Secret key for JWT (replace with a strong, secret key)
 const jwtSecret = 'paraMountMinar404Gethahah.';
@@ -27,8 +27,8 @@ app.set('view engine', 'html');
 const transporter = nodemailer.createTransport({
   service: 'gmail',
   auth: {
-    user: 'abc@gmail.com', // replace with your Gmail address
-    pass: 'asjfoajfao', // replace with your Gmail password or an app-specific password
+    user: '<youremail>', // replace with your Gmail address
+    pass: '<yourapppassword>', // replace with your Gmail password or an app-specific password
   },
 });
 
@@ -40,6 +40,8 @@ app.get('/', (req, res) => {
 app.post('/add', async (req, res) => {
   try {
     const { name, email, message } = req.body;
+
+//    const emailInt = parseInt(email, 10);
 
     // Connect to MongoDB
     const client = new MongoClient(mongoUri, { useNewUrlParser: true, useUnifiedTopology: true });
@@ -70,6 +72,7 @@ app.post('/add', async (req, res) => {
   }
 });
 
+
 // Middleware for basic authentication
 const authenticate = (req, res, next) => {
   const credentials = basicAuth(req);
@@ -78,11 +81,12 @@ const authenticate = (req, res, next) => {
     res.setHeader('WWW-Authenticate', 'Basic realm="Secure Area"');
     res.status(401).send('Authentication required');
   } else if (credentials.name == 'chooseanything' && credentials.pass == 'literally'){
-    next();
-  } else {
+	next();
+	} else {
     res.status(403).send('Authentication Failed!');
   }
 };
+
 
 // Route to fetch all details from MongoDB with authentication
 app.get('/api/details', authenticate, async (req, res) => {
@@ -104,18 +108,8 @@ app.get('/api/details', authenticate, async (req, res) => {
   }
 });
 
-// HTTPS options
-const httpsOptions = {
-  key: fs.readFileSync('privkey1.pem'),
-  cert: fs.readFileSync('fullchain1.pem'),
-  ca: [
-    fs.readFileSync('chain1.pem'),
-    fs.readFileSync('cert1.pem')
-  ]
-};
-
-// Start the HTTPS server
-https.createServer(httpsOptions, app).listen(port, () => {
+// Start the Express server
+app.listen(port, () => {
   console.log(`Server running at https://localhost:${port}/`);
 });
 

@@ -1,1 +1,5 @@
 node_modules
+fullchain1.pem
+cert1.pem
+chain1.pem
+privkey1.pem
