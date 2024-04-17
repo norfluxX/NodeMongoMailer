@@ -33,8 +33,12 @@ services:
       - ./package.json:/app/package.json
       - ./package-lock.json:/app/package-lock.json
       - ./app.js:/app/app.js
+      - ./fullchain1.pem:/app/fullchain1.pem
+      - ./cert1.pem:/app/cert1.pem
+      - ./privkey1.pem:/app/privkey1.pem
+      - ./chain1.pem:/app/chain1.pem
     ports:
-      - "3000:3000"
+      - "443:443"
     networks:
       my_network:
         ipv4_address: 172.18.0.3
