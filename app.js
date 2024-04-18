@@ -9,9 +9,9 @@ const basicAuth = require('basic-auth');
 const app = express();
 const port = process.env.PORT || 443;
 
-const mongoUsername = 'coint';
-const mongoPassword = 'foreX_1';
-const mongoUri = `mongodb://coin:foreX_1@172.17.0.2:27017`;
+const mongoUsername = 'admin';
+const mongoPassword = 'admin';
+const mongoUri = `mongodb://admin:admin@172.18.0.2:27017`;
 const dbName = 'foo';
 const collectionName = 'roger';
 
@@ -27,8 +27,8 @@ app.set('view engine', 'html');
 const transporter = nodemailer.createTransport({
   service: 'gmail',
   auth: {
-    user: 'abc@gmail.com', // replace with your Gmail address
-    pass: 'asjfoajfao', // replace with your Gmail password or an app-specific password
+    user: 'bhikeshkhute10.3@gmail.com', // replace with your Gmail address
+    pass: 'hcsazqdrusqkqibp', // replace with your Gmail password or an app-specific password
   },
 });
 
