@@ -1,5 +1,6 @@
 # EmailSender-NodeMongo using Docker compose
-### In this project, we have created an application using NodeJS which can send email to anyone and also make a copy of data in a mongo database over HTTPS. 
+### In this project, we have created an application using NodeJS which can send email to anyone and also make a copy of data in a mongo database over HTTPS.
+
 ### Also, we will be fetching details from MongoDB via API using Postman tool.
 ### Prerequisties: 
 1. Node version >= 16 and NPM >= 8.0
