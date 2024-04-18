@@ -1,5 +1,5 @@
 # EmailSender-NodeMongo using Docker compose
-### In this project, we have created a front-end application using NodeJS which can send email to anyone and also make a copy of data in a mongo database. 
+### In this project, we have created an application using NodeJS which can send email to anyone and also make a copy of data in a mongo database over HTTPS. 
 ### Also, we will be fetching details from MongoDB via API using Postman tool.
 ### Prerequisties: 
 1. Node version >= 16 and NPM >= 8.0
@@ -14,7 +14,7 @@
    ```
    docker-compose up -d
    ```
-4. Visit the page i.e. http://localhost:3000 and fill out the details asked and you will receive an email as well the entry will sent to mongo database container.
+4. Visit the page i.e. https://localhost and fill out the details asked and you will receive an email as well the entry will sent to mongo database container.
 5. Now, let's fetch the details from MonogoDB using API. We will be using basic authentication - username and password provided in the app.js file. Following is the screenshot of the same.
 <p align="center">
       <img src="https://github.com/norfluxX/EmailSender-NodeMongo/assets/35907619/6acf7a22-f98a-4452-bddf-c29d09938760" />
@@ -77,7 +77,7 @@
    COPY package*.json ./
    RUN npm install
    COPY . .
-   EXPOSE 3000
+   EXPOSE 443
    CMD ["npm", "start"]
    ```
-9. Visit the page i.e. http://localhost:3000 and fill out the details asked and you will receive an email as well the entry will sent to mongo database container.
+9. Visit the page i.e. https://localhost and fill out the details asked and you will receive an email as well the entry will sent to mongo database container.
