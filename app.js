@@ -27,8 +27,8 @@ app.set('view engine', 'html');
 const transporter = nodemailer.createTransport({
   service: 'gmail',
   auth: {
-    user: 'bhikeshkhute10.3@gmail.com', // replace with your Gmail address
-    pass: 'hcsazqdrusqkqibp', // replace with your Gmail password or an app-specific password
+    user: 'demo@gmail.com', // replace with your Gmail address
+    pass: 'demo', // replace with your Gmail password or an app-specific password
   },
 });
 
